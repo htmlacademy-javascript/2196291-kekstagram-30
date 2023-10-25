@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
-* Студент: [Евгений Семенов](https://up.htmlacademy.ru/javascript/30/user/2196291).
-* Наставник: `Неизвестно`.
+- Студент: [Евгений Семенов](https://up.htmlacademy.ru/javascript/30/user/2196291).
+- Наставник: [Антон Попов] (https://htmlacademy.ru/profile/joker).
 
 ---
 

@@ -1,3 +1,3 @@
-import { similarPicture } from './data.js';
+import { getSimilarPicture } from './data.js';
 
-console.log (similarPicture());
+console.log (getSimilarPicture());
