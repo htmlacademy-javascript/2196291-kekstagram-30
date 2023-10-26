@@ -42,7 +42,6 @@ const createPicture = (pictureId) => {
 };
 
 
-const similarPicture = () => new Array(PICTURE_COUNT).fill().map((_, index) => createPicture(index + 1));
-similarPicture();
+const getSimilarPicture = () => new Array(PICTURE_COUNT).fill().map((_, index) => createPicture(index + 1));
 
-export {similarPicture};
+export {getSimilarPicture};

@@ -1,3 +1,10 @@
-import { similarPicture } from './data.js';
+import { getSimilarPicture } from './data.js';
+import { addThumbnailsToContainer } from './rendering.js';
 
-console.log (similarPicture());
+const pictures = getSimilarPicture();
+const pictureContainer = document.querySelector('.pictures');
+
+addThumbnailsToContainer(pictures, pictureContainer);
+
+
+console.log (getSimilarPicture());
