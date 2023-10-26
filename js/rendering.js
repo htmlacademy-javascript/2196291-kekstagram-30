@@ -10,7 +10,8 @@ const createUserPicture = ({ url, like, comments }) => {
 };
 
 const addThumbnailsToContainer = (pictures, container) => {
-  const userPictures = pictures.map(({ url, like, comments }) => createUserPicture({ url, like, comments }));
+  // const userPictures = pictures.map(({ url, like, comments }) => createUserPicture({ url, like, comments }));
+  const userPictures = pictures.map(createUserPicture);
   container.append(...userPictures);
 };
 
