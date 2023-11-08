@@ -30,6 +30,8 @@ const onDocumentKeydown = (evt) => {
     bigPicturesContainer.classList.remove('modal-open');
     closeUserBigPicture();
     closeUserBigPictureEscape();
+    document.body.classList.remove('modal-open');
+
   }
 };
 

@@ -56,6 +56,7 @@
               class="img-upload__form"
               id="upload-select-image"
               autocomplete="off"
+              method="post" enctype="multipart/form-data" action="https://30.javascript.pages.academy/kekstagram"
             >
               <!-- Изначальное состояние поля для загрузки изображения -->
               <fieldset class="img-upload__start">
@@ -238,6 +239,10 @@
                         class="text__hashtags"
                         name="hashtags"
                         placeholder="#ХэшТег"
+                        data-pristine-minlength="2"
+                        data-pristine-minlength-message="Минимум 2 символа"
+                        data-pristine-maxlength="100"
+                        data-pristine-maxlength-message="Максимум 100 символов"
                       />
                     </div>
                     <div class="img-upload__field-wrapper">
@@ -245,6 +250,8 @@
                         class="text__description"
                         name="description"
                         placeholder="Ваш комментарий..."
+                        data-pristine-maxlength="140"
+                        data-pristine-maxlength-message="Максимальная длинна 140 символов"
                       ></textarea>
                     </div>
                   </fieldset>
@@ -451,6 +458,7 @@
         <h2 class="data-error__title">Не удалось загрузить данные</h2>
       </section>
     </template>
+    <script src="vendor/pristine/pristine.min.js"></script>
     <script src="js/main.js" type="module"></script>
 </body>
 </html>
