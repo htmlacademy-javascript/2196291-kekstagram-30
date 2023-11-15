@@ -8,7 +8,7 @@ import {
   COMMENT_MESSEGE,
   DESCRIPTIONS,
   NAMES
-} from './setup-const';
+} from './setup-const.js';
 
 //генерация рамдомного ID элемента
 const getRandomInteger = (a, b) => {
@@ -42,6 +42,20 @@ const createPicture = (pictureId) => {
 };
 
 
-const getSimilarPictures = () => new Array(PICTURE_COUNT).fill().map((_, index) => createPicture(index + 1));
+// const getSimilarPictures = () => new Array(PICTURE_COUNT).fill().map((_, index) => createPicture(index + 1));
 
-export {getSimilarPictures};
+// // export {getSimilarPictures};
+const REMOVE_MESSAGE_TIMEOUT = 5000;
+
+const errorMessageTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
+
+// сообщение об ошибке
+function showErrorMessage() {
+  const errorElement = errorMessageTemplate.cloneNode(true);
+  document.body.append (errorElement);
+  setTimeout (() => {
+    errorElement. remove();
+  },
+  REMOVE_MESSAGE_TIMEOUT) ;
+}
+export { showErrorMessage };
