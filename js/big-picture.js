@@ -63,7 +63,8 @@ function closeUserBigPictureEscape() {
 // закрывает окно по клику мышки на крестик
 closeBigPicture.addEventListener('click', () => {
   bigPicturesContainer.classList.add('hidden');
-  bigPicturesContainer.classList.remove('modal-open');
+  document.body.classList.remove('modal-open');
+
 });
 
 export { renderBigPicture };
