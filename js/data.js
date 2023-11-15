@@ -42,9 +42,11 @@ const createPicture = (pictureId) => {
 };
 
 
-// const getSimilarPictures = () => new Array(PICTURE_COUNT).fill().map((_, index) => createPicture(index + 1));
+const getSimilarPictures = () => new Array(PICTURE_COUNT).fill().map((_, index) => createPicture(index + 1));
 
-// // export {getSimilarPictures};
+export {getSimilarPictures};
+
+// сообщение об ошивке будет висеть не меньше 5 сек
 const REMOVE_MESSAGE_TIMEOUT = 5000;
 
 const errorMessageTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
