@@ -13,7 +13,6 @@ const bodyContainer = document.querySelector('body');
 const closeFormButton = editingForm.querySelector('.img-upload__cancel');
 const inputHashtag = editingForm.querySelector('.text__hashtags'); // находим input hashtag
 const inputComment = editingForm.querySelector('.text__description'); // находим input коментариев
-// const onFormSubmit = editingForm.querySelector('#img-upload__submit');
 
 
 // Список всех фильтров
@@ -108,3 +107,5 @@ const unEventEscape = (item) => {
 };
 unEventEscape(inputHashtag);
 unEventEscape(inputComment);
+
+export { сloseForm };

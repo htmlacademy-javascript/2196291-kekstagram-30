@@ -1,8 +1,31 @@
+import { sendPictures } from './api.js';
+import { сloseForm } from './form-opening.js';
+import { showSuccessMessage, showErrorMessage } from './message.js';
+
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+
+
 const imageUploadForm = document.querySelector('.img-upload__form');
 const imageUploadText = document.querySelector('.img-upload__text');
 const formHashtag = imageUploadText.querySelector('.text__hashtags');
+const buttonSubmit = document.querySelector('.img-upload__submit');
+
+
+const SubmitButtonCaption = {
+  SUBMITTING: 'Отправляю...',
+  IDLE: 'Опубликовать',
+};
+
+const toggleSubmitButton = (isDisabled) => {
+  buttonSubmit.disabled = isDisabled;
+  if (isDisabled) {
+    buttonSubmit.textContent = SubmitButtonCaption.SUBMITTING;
+  } else {
+    buttonSubmit.textContent = SubmitButtonCaption.IDLE;
+  }
+};
+
 
 const pristine = new Pristine(imageUploadForm, {
   // Элемент, на который будут добавляться классы
@@ -48,10 +71,52 @@ pristine.addValidator(
   'Хэштеги должны быть уникальными'
 );
 
-// Проверка валидации при отправке формы
-imageUploadForm.addEventListener('submit', () => {
-  // evt.preventDefault();
-  pristine.validate();
-});
+// // Проверка валидации при отправке формы
+// const sendForm = async (formElement) => {
+//   if (!pristine.validate()) {
+//     return;
+//   }
+//   try {
+//     toggleSubmitButton(true);
+//     await sendPictures(new FormData(formElement));
+//     сloseForm();
+//     showSuccessMessage();
+//     // eslint-disable-next-line no-console
+//     console.log('форма отправлена');
+//   } catch {
+//     showErrorMessage();
+//     // eslint-disable-next-line no-console
+//     console.log('форма НЕотправлена');
+//   } finally {
+//     toggleSubmitButton(false);
+
+//   }
+// };
+
+const sendForm = async (formElement) => {
+  if (!pristine.validate) {
+    return;
+  }
+  try {
+    toggleSubmitButton(true);
+    await sendPictures(new FormData(formElement));
+    сloseForm();
+    showSuccessMessage();
+  } catch {
+    showErrorMessage();
+  } finally {
+    toggleSubmitButton(false);
+
+  }
+
+};
+
+
+const onFormSubmit = (evt) => {
+  evt.preventDefault();
+  sendForm(evt.target);
+};
+
+imageUploadForm.addEventListener('submit', (onFormSubmit));
 
 export {imageUploadForm, pristine};
