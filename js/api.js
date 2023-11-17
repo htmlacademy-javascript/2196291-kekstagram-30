@@ -7,7 +7,7 @@ const ServerRouete = {
 
 const HttpMethod = {
   GET: 'GET',
-  POST: 'POST',
+  POST: 'POST'
 };
 
 const ErrorText = {
@@ -19,7 +19,7 @@ const ErrorText = {
 async function request(url, method = HttpMethod.GET, body = null) {
   const response = await fetch(url, { method, body });
   if (! response.ok) {
-    throw new Error(ErrorText[method]) ;
+    throw new Error(ErrorText[method]);
   }
 
   return response.json();
