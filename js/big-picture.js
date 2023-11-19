@@ -35,14 +35,14 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
-const renderBigPicture = ({ url, description, like, comments }) => {
+const renderBigPicture = ({ url, description, likes, comments }) => {
   bigPicturesContainer.classList.remove('hidden');
   document.body.classList.add('modal-open');
   commentCount.classList.add('hidden');
   commentLoader.classList.add('hidden');
   bigPicture.querySelector('.big-picture__img img').src = url;
   bigPicture.querySelector('.big-picture__img img').alt = description;
-  bigPicture.querySelector('.likes-count').textContent = like;
+  bigPicture.querySelector('.likes-count').textContent = likes;
   bigPicture.querySelector('.social__caption').textContent = description;
 
   commentsContainer.innerHTML = '';
@@ -63,7 +63,8 @@ function closeUserBigPictureEscape() {
 // закрывает окно по клику мышки на крестик
 closeBigPicture.addEventListener('click', () => {
   bigPicturesContainer.classList.add('hidden');
-  bigPicturesContainer.classList.remove('modal-open');
+  document.body.classList.remove('modal-open');
+
 });
 
 export { renderBigPicture };

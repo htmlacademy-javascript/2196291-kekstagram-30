@@ -8,11 +8,12 @@ const SCALE_MAX = 100;
 
 const imageUploadForm = document.querySelector('.img-upload__form'); // находим фору
 const editingForm = imageUploadForm.querySelector('.img-upload__overlay');// находим форму редактирования
-const addingNewImage = document.querySelector('#upload-file');// находим элемент на который будем кликать
+const addingNewImage = document.querySelector('.img-upload__input');// находим элемент на который будем кликать
 const bodyContainer = document.querySelector('body');
 const closeFormButton = editingForm.querySelector('.img-upload__cancel');
 const inputHashtag = editingForm.querySelector('.text__hashtags'); // находим input hashtag
 const inputComment = editingForm.querySelector('.text__description'); // находим input коментариев
+
 
 // Список всех фильтров
 const effecstList = document.querySelector('.effects__list');
@@ -80,11 +81,7 @@ function сloseForm () {
 }
 
 
-// addingNewImage.onchange = function () {
-//   openDownloadForm();
-// };
-
-addingNewImage.addEventListener('click', () => {
+addingNewImage.addEventListener('change', () => {
   openDownloadForm();
 });
 
@@ -110,3 +107,5 @@ const unEventEscape = (item) => {
 };
 unEventEscape(inputHashtag);
 unEventEscape(inputComment);
+
+export { сloseForm };
