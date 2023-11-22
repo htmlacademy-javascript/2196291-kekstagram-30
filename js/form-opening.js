@@ -5,6 +5,7 @@ import {changeOriginalEffect, onEffectListChange} from './form-slider.js';
 const SCALE_STEP = 25;
 const SCALE_MIN = 25;
 const SCALE_MAX = 100;
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 const imageUploadForm = document.querySelector('.img-upload__form'); // находим фору
 const editingForm = imageUploadForm.querySelector('.img-upload__overlay');// находим форму редактирования
@@ -13,16 +14,19 @@ const bodyContainer = document.querySelector('body');
 const closeFormButton = editingForm.querySelector('.img-upload__cancel');
 const inputHashtag = editingForm.querySelector('.text__hashtags'); // находим input hashtag
 const inputComment = editingForm.querySelector('.text__description'); // находим input коментариев
-
-
-// Список всех фильтров
-const effecstList = document.querySelector('.effects__list');
+const effecstList = document.querySelector('.effects__list');// Список всех фильтров
 
 // <Масштаб изображения>
 const scaleSmaller = editingForm.querySelector('.scale__control--smaller');
 const scaleBigger = editingForm.querySelector('.scale__control--bigger');
 const scaleValue = editingForm.querySelector('.scale__control--value');
 const scaleImage = editingForm.querySelector('.img-upload__preview');
+// Загрузка изображения пользователя
+const fileChooser = document.querySelector('.img-upload__input');
+// const scaleImage = document.querySelector('.img-upload__preview');
+const preview = scaleImage.querySelector('img');
+const smallPreviews = document.querySelectorAll('.effects__preview');
+
 let scaleNumber;
 
 // <Масштаб изображения>
@@ -107,5 +111,20 @@ const unEventEscape = (item) => {
 };
 unEventEscape(inputHashtag);
 unEventEscape(inputComment);
+
+
+// Загрузка изображения пользователя
+fileChooser.addEventListener('change', () => {
+  const file = fileChooser.files[0];
+  const fileName = file.name.toLowerCase();
+  const matches = FILE_TYPES.some((type) => fileName.endsWith(type));
+  if (matches) {
+    preview.src = URL.createObjectURL(file);
+    smallPreviews.forEach((smallPreview) => {
+      smallPreview.style.backgroundImage = `  url('${preview.src}')`;
+    });
+  }
+});
+
 
 export { сloseForm };

@@ -71,27 +71,6 @@ pristine.addValidator(
   'Хэштеги должны быть уникальными'
 );
 
-// // Проверка валидации при отправке формы
-// const sendForm = async (formElement) => {
-//   if (!pristine.validate()) {
-//     return;
-//   }
-//   try {
-//     toggleSubmitButton(true);
-//     await sendPictures(new FormData(formElement));
-//     сloseForm();
-//     showSuccessMessage();
-//     // eslint-disable-next-line no-console
-//     console.log('форма отправлена');
-//   } catch {
-//     showErrorMessage();
-//     // eslint-disable-next-line no-console
-//     console.log('форма НЕотправлена');
-//   } finally {
-//     toggleSubmitButton(false);
-
-//   }
-// };
 
 const sendForm = async (formElement) => {
   if (!pristine.validate) {
