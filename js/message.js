@@ -2,16 +2,16 @@ const successMessageElement = document.querySelector('#success').content.querySe
 
 const errorMessageElement = document.querySelector('#error').content.querySelector('.error');
 
-function hideMessage() {
-
+const hideMessage = () => {
   const existsElement = document.querySelector('.success') || document.querySelector('.error');
   existsElement.remove();
   document.removeEventListener('keydown', onDocumentKeydown);
   document.body.addEventListener('click', onBodyClick);
-}
-function onCloseButtonClick() {
+};
+
+const onCloseButtonClick = () => {
   hideMessage();
-}
+};
 
 function onDocumentKeydown(evt) {
   if (evt.key === 'Escape') {
@@ -27,22 +27,22 @@ function onBodyClick(evt) {
   hideMessage();
 }
 
-function showMessage(element, buttonClass) {
+const showMessage = (element, buttonClass) => {
   document.body.append (element);
   element
     .querySelector(buttonClass)
     .addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onDocumentKeydown);
   document.body.addEventListener('click', onBodyClick);
-}
+};
 
-function showErrorMessage() {
+const showErrorMessage = () => {
   showMessage(errorMessageElement, '.error__button');
-}
+};
 
-function showSuccessMessage() {
+const showSuccessMessage = () => {
   showMessage (successMessageElement, '.success__button');
-}
+};
 
 
 export { showSuccessMessage, showErrorMessage };
