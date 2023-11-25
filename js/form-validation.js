@@ -4,8 +4,6 @@ import { showSuccessMessage, showErrorMessage } from './message.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
-
-
 const imageUploadForm = document.querySelector('.img-upload__form');
 const imageUploadText = document.querySelector('.img-upload__text');
 const formHashtag = imageUploadText.querySelector('.text__hashtags');
@@ -50,7 +48,7 @@ const isValidateTextHashtag = (textHashtag) => normilize(textHashtag).every((tag
 pristine.addValidator(
   formHashtag,
   isValidateTextHashtag,
-  'Хэштег начинаться с #, должен состоять из букв и чисел и не превыщать 20 символов'
+  'Хэштег начинаeтся с #, должен состоять из букв и чисел и не превыщать 20 символов'
 );
 // 2. превышено количество хэш-тегов;
 const isValidCountHashtag = (textHashtag) => normilize(textHashtag).length <= MAX_HASHTAG_COUNT;
@@ -98,4 +96,4 @@ const onFormSubmit = (evt) => {
 
 imageUploadForm.addEventListener('submit', (onFormSubmit));
 
-export {imageUploadForm, pristine};
+export { pristine};

@@ -1,11 +1,12 @@
 // Элемент, в который будет отрисовывать слайдер
-const sliderElement = document.querySelector('.img-upload__effect-level');
+const sliderElement = document.querySelector('.effect-level__slider');
 
 //  Уровень эффекта записывается в поле .effect-level__value
 const effectLevelValue = document.querySelector('.effect-level__value');
 
 // При изменении уровня интенсивности эффекта, CSS-стили картинки внутри .img-upload__preview обновляются
-const imagePreview = document.querySelector('.img-upload__preview');
+const imagePreview = document.querySelector('.img-upload__preview img');
+const imgUploadEffectLevel = document.querySelector('.img-upload__effect-level');
 
 // Создаем слайдер
 noUiSlider.create(sliderElement, {
@@ -31,10 +32,19 @@ const changeSlider = (opts) => {
   });
 };
 
+
 // Для эффекта «Оригинал» CSS-стили filter удаляются, слайдер и его контейнер (элемент .img-upload__effect-level) скрываются.
 const changeOriginalEffect = () => {
   imagePreview.style.filter = '';
   sliderElement.classList.add('hidden');
+  imgUploadEffectLevel.classList.add('hidden');
+};
+
+// Для остальных эффектов CSS-стили filter добавляются, слайдер и его контейнер (элемент .img-upload__effect-level) показываем.
+const changeEffect = () => {
+  // imagePreview.style.filter = '';
+  sliderElement.classList.remove('hidden');
+  imgUploadEffectLevel.classList.remove('hidden');
 };
 
 // Объект с фильтрами
@@ -112,7 +122,10 @@ const onEffectListChange = (evt) => {
   const effect = evt.target.id;
   if (effect === 'effect-none') {
     changeOriginalEffect();
+    // imgUploadEffectLevel.classList.remove('hidden');
     return;
+  } else {
+    changeEffect();
   }
   sliderElement.classList.remove('hidden');
   const opts = PARAMETRS_EFFECTS[effect].opts;
@@ -121,5 +134,6 @@ const onEffectListChange = (evt) => {
   changeSlider(opts);
   changeValueEffect(effectName, unitMeasurement);
 };
+
 
 export {changeOriginalEffect, onEffectListChange};

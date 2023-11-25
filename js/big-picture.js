@@ -1,5 +1,7 @@
+import { bodyModalOpenAdd, bodyModalOpenRemove } from './data.js';
+
 const bigPicture = document.querySelector('.big-picture');
-const body = document.querySelector('body');
+
 const socialComments = bigPicture.querySelector('.social__comments');
 const socialComment = bigPicture.querySelector('.social__comment');
 const bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
@@ -50,20 +52,21 @@ const renderBigPicture = ({url, description, likes, comments}) => {
   bigPicture.querySelector('.social__comment-total-count').textContent = comments.length;
   containerComments = comments;
   bigPicture.classList.remove('hidden');
-  body.classList.add('.modal-open');
+  bodyModalOpenAdd();
   renderComments((comments));
 };
 
 bigPictureClose.addEventListener('click', () => {
   bigPicture.classList.add('hidden');
-  body.classList.remove('.modal-open');
+  bodyModalOpenRemove();
   commentsCountShown = 0;
 });
+
 
 document.addEventListener('keydown', (evt) => {
   if (evt.key === 'Escape') {
     bigPicture.classList.add('hidden');
-    body.classList.remove('.modal-open');
+    bodyModalOpenRemove();
     commentsCountShown = 0;
   }
 });

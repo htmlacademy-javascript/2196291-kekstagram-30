@@ -1,6 +1,4 @@
-// import { getRandomInteger } from "./data.js";
-// import { addThumbnailsToContainer } from './rendering.js';
-import { debounce } from './data.js';
+import { debounce, getRandomIndex } from './data.js';
 import { createUserPicture } from './rendering.js';
 const filtersEl = document.querySelector('.img-filters');
 const filterForm = document.querySelector('.img-filters__form');
@@ -8,12 +6,8 @@ const defaultButton = filterForm.querySelector('#filter-default');
 const randomButton = filterForm.querySelector('#filter-random');
 const discussedButton = filterForm.querySelector('#filter-discussed');
 
-const MAX_RANDOM_FILTER = 10;
-// показываем фильтры
+const MAX_RANDOM_FILTER = 10; // колличество элементов в фильтре "случайные"
 
-// filterForm.addEventListener ('click', () => {
-//   randomButton.classList.add('img-filters__button--active');
-// });
 
 const FilterEnum = {
   DEFAULT: 'default',
@@ -21,7 +15,6 @@ const FilterEnum = {
   DISCUSSED: 'discussed'
 };
 
-const getRandomIndex = (min, max) => Math.floor(Math.random() * (max - min));
 
 const filterHandlers = {
   [FilterEnum.DEFAULT]: (data) => data,
@@ -45,7 +38,6 @@ const repaint = (event, filter, data) => {
   const filterData = filterHandlers[filter](data);
   const pictures = document.querySelectorAll('.picture');
   pictures.forEach((item) => item.remove());
-  // addThumbnailsToContainer(filterData);
   createUserPicture(filterData);
   const currentActiveFilter = filterForm.querySelector('.img-filters__button--active');
   currentActiveFilter.classList.remove('img-filters__button--active');
