@@ -1,28 +1,31 @@
 import {pristine} from './form-validation.js';
 import {changeOriginalEffect, onEffectListChange} from './form-slider.js';
+import { bodyModalOpenAdd, bodyModalOpenRemove } from './data.js';
 
 
 const SCALE_STEP = 25;
 const SCALE_MIN = 25;
 const SCALE_MAX = 100;
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 const imageUploadForm = document.querySelector('.img-upload__form'); // находим фору
 const editingForm = imageUploadForm.querySelector('.img-upload__overlay');// находим форму редактирования
 const addingNewImage = document.querySelector('.img-upload__input');// находим элемент на который будем кликать
-const bodyContainer = document.querySelector('body');
+// const bodyContainer = document.querySelector('body');
 const closeFormButton = editingForm.querySelector('.img-upload__cancel');
 const inputHashtag = editingForm.querySelector('.text__hashtags'); // находим input hashtag
 const inputComment = editingForm.querySelector('.text__description'); // находим input коментариев
-
-
-// Список всех фильтров
-const effecstList = document.querySelector('.effects__list');
+const effecstList = document.querySelector('.effects__list');// Список всех фильтров
 
 // <Масштаб изображения>
 const scaleSmaller = editingForm.querySelector('.scale__control--smaller');
 const scaleBigger = editingForm.querySelector('.scale__control--bigger');
 const scaleValue = editingForm.querySelector('.scale__control--value');
-const scaleImage = editingForm.querySelector('.img-upload__preview');
+const scaleImage = editingForm.querySelector('.img-upload__preview img');
+// Загрузка изображения пользователя
+const fileChooser = document.querySelector('.img-upload__input');
+const smallPreviews = document.querySelectorAll('.effects__preview');
+
 let scaleNumber;
 
 // <Масштаб изображения>
@@ -55,22 +58,22 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
+
 // функия открытия формы
 const openDownloadForm = () => {
   editingForm.classList.remove('hidden');
-  bodyContainer.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
   scaleSmaller.addEventListener('click', onMinButtonClick);
   scaleBigger.addEventListener('click', onMaxButtonClick);
   changeOriginalEffect();
   effecstList.addEventListener('change', onEffectListChange);
+  bodyModalOpenAdd();
 
 };
 
 // функия закрытия формы
 function сloseForm () {
   editingForm.classList.add('hidden');
-  bodyContainer.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
   scaleSmaller.removeEventListener('click', onMinButtonClick);
   scaleBigger.removeEventListener('click', onMaxButtonClick);
@@ -78,6 +81,7 @@ function сloseForm () {
   imageUploadForm.reset(); // очищаем форму
   pristine.reset(); // сбрасываем pristine
   scaleImage.style.transform = '';
+  bodyModalOpenRemove();
 }
 
 
@@ -107,5 +111,20 @@ const unEventEscape = (item) => {
 };
 unEventEscape(inputHashtag);
 unEventEscape(inputComment);
+
+
+// Загрузка изображения пользователя
+fileChooser.addEventListener('change', () => {
+  const file = fileChooser.files[0];
+  const fileName = file.name.toLowerCase();
+  const matches = FILE_TYPES.some((type) => fileName.endsWith(type));
+  if (matches) {
+    scaleImage.src = URL.createObjectURL(file);
+    smallPreviews.forEach((smallPreview) => {
+      smallPreview.style.backgroundImage = `  url('${scaleImage.src}')`;
+    });
+  }
+});
+
 
 export { сloseForm };

@@ -12,4 +12,26 @@ function showErrorMessage() {
   },
   REMOVE_MESSAGE_TIMEOUT) ;
 }
-export { showErrorMessage };
+
+const bodyModalOpenAdd = () => {
+  document.body.classList.add('modal-open');
+};
+
+const bodyModalOpenRemove = () => {
+  document.body.classList.remove('modal-open');
+};
+
+const getRandomIndex = (min, max) => Math.floor(Math.random() * (max - min));
+
+
+function debounce (callback, timeoutDelay = 500) {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
+
+export { showErrorMessage, debounce, getRandomIndex, bodyModalOpenAdd, bodyModalOpenRemove };

@@ -4,8 +4,6 @@ import { showSuccessMessage, showErrorMessage } from './message.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
-
-
 const imageUploadForm = document.querySelector('.img-upload__form');
 const imageUploadText = document.querySelector('.img-upload__text');
 const formHashtag = imageUploadText.querySelector('.text__hashtags');
@@ -50,7 +48,7 @@ const isValidateTextHashtag = (textHashtag) => normilize(textHashtag).every((tag
 pristine.addValidator(
   formHashtag,
   isValidateTextHashtag,
-  'Хэштег начинаться с #, должен состоять из букв и чисел и не превыщать 20 символов'
+  'Хэштег начинаeтся с #, должен состоять из букв и чисел и не превыщать 20 символов'
 );
 // 2. превышено количество хэш-тегов;
 const isValidCountHashtag = (textHashtag) => normilize(textHashtag).length <= MAX_HASHTAG_COUNT;
@@ -71,27 +69,6 @@ pristine.addValidator(
   'Хэштеги должны быть уникальными'
 );
 
-// // Проверка валидации при отправке формы
-// const sendForm = async (formElement) => {
-//   if (!pristine.validate()) {
-//     return;
-//   }
-//   try {
-//     toggleSubmitButton(true);
-//     await sendPictures(new FormData(formElement));
-//     сloseForm();
-//     showSuccessMessage();
-//     // eslint-disable-next-line no-console
-//     console.log('форма отправлена');
-//   } catch {
-//     showErrorMessage();
-//     // eslint-disable-next-line no-console
-//     console.log('форма НЕотправлена');
-//   } finally {
-//     toggleSubmitButton(false);
-
-//   }
-// };
 
 const sendForm = async (formElement) => {
   if (!pristine.validate) {
@@ -119,4 +96,4 @@ const onFormSubmit = (evt) => {
 
 imageUploadForm.addEventListener('submit', (onFormSubmit));
 
-export {imageUploadForm, pristine};
+export { pristine};

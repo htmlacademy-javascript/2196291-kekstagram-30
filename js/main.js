@@ -1,21 +1,18 @@
-import { addThumbnailsToContainer } from './rendering.js';
-import './form-opening.js';
+import { createUserPicture } from './rendering.js';
 import './form-validation.js';
-export { renderBigPicture } from './big-picture.js';
 import { loadPictures } from './api.js';
 import { showErrorMessage} from './data.js';
-
-
-const pictureContainer = document.querySelector('.pictures');
+import { initFilter } from './filter.js';
 
 
 async function bootstrap() {
   try {
     const pictures = await loadPictures();
-    addThumbnailsToContainer(pictures, pictureContainer);
+    createUserPicture(pictures);
+    initFilter(pictures);
+
   } catch(error) {
     showErrorMessage();
   }
-
 }
 bootstrap();
