@@ -1,6 +1,6 @@
 import {pristine} from './form-validation.js';
 import {changeOriginalEffect, onEffectListChange} from './form-slider.js';
-import { bodyModalOpenAdd, bodyModalOpenRemove } from './data.js';
+import { bodyModalOpenAdd, bodyModalOpenRemove } from './util.js';
 
 
 const SCALE_STEP = 25;

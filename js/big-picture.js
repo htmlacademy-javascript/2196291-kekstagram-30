@@ -1,4 +1,4 @@
-import { bodyModalOpenAdd, bodyModalOpenRemove } from './data.js';
+import { bodyModalOpenAdd, bodyModalOpenRemove } from './util.js';
 
 const bigPicture = document.querySelector('.big-picture');
 
