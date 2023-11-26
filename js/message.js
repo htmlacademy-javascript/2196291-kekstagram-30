@@ -5,7 +5,7 @@ const errorMessageElement = document.querySelector('#error').content.querySelect
 const hideMessage = () => {
   const existsElement = document.querySelector('.success') || document.querySelector('.error');
   existsElement.remove();
-  document.removeEventListener('keydown', onDocumentKeydown);
+  document.body.removeEventListener('keydown', onDocumentKeydown);
   document.body.addEventListener('click', onBodyClick);
 };
 
@@ -17,6 +17,8 @@ function onDocumentKeydown(evt) {
   if (evt.key === 'Escape') {
     evt.preventDefault();
     hideMessage();
+    document.removeEventListener('keydown', onDocumentKeydown);
+
   }
 }
 

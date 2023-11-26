@@ -30,6 +30,7 @@ const pristine = new Pristine(imageUploadForm, {
   classTo: 'img-upload__field-wrapper',
   // Элемент, куда будет выводиться текст с ошибкой
   errorTextParent: 'img-upload__field-wrapper',
+  errorTextClass: 'img-upload__field-wrapper--error',
 });
 
 

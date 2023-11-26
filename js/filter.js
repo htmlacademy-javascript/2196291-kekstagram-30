@@ -1,4 +1,4 @@
-import { debounce, getRandomIndex } from './data.js';
+import { debounce, getRandomIndex } from './util.js';
 import { createUserPicture } from './rendering.js';
 const filtersEl = document.querySelector('.img-filters');
 const filterForm = document.querySelector('.img-filters__form');

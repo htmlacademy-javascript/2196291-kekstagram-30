@@ -7,7 +7,6 @@ const effectLevelValue = document.querySelector('.effect-level__value');
 // При изменении уровня интенсивности эффекта, CSS-стили картинки внутри .img-upload__preview обновляются
 const imagePreview = document.querySelector('.img-upload__preview img');
 const imgUploadEffectLevel = document.querySelector('.img-upload__effect-level');
-
 // Создаем слайдер
 noUiSlider.create(sliderElement, {
   range: {
@@ -117,12 +116,12 @@ const changeValueEffect = (effectName, unitMeasurement) => {
   });
 };
 
+
 // Определяем какой элемент выбрали и применяем необходимый тип фильтра + значение
 const onEffectListChange = (evt) => {
   const effect = evt.target.id;
   if (effect === 'effect-none') {
     changeOriginalEffect();
-    // imgUploadEffectLevel.classList.remove('hidden');
     return;
   } else {
     changeEffect();

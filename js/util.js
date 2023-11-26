@@ -34,4 +34,6 @@ function debounce (callback, timeoutDelay = 500) {
   };
 }
 
-export { showErrorMessage, debounce, getRandomIndex, bodyModalOpenAdd, bodyModalOpenRemove };
+const checkLengthString = (string, length) => string.length <= length;
+
+export { showErrorMessage, debounce, getRandomIndex, bodyModalOpenAdd, bodyModalOpenRemove, checkLengthString };
