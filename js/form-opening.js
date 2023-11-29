@@ -11,7 +11,6 @@ const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 const imageUploadForm = document.querySelector('.img-upload__form'); // находим фору
 const editingForm = imageUploadForm.querySelector('.img-upload__overlay');// находим форму редактирования
 const addingNewImage = document.querySelector('.img-upload__input');// находим элемент на который будем кликать
-// const bodyContainer = document.querySelector('body');
 const closeFormButton = editingForm.querySelector('.img-upload__cancel');
 const inputHashtag = editingForm.querySelector('.text__hashtags'); // находим input hashtag
 const inputComment = editingForm.querySelector('.text__description'); // находим input коментариев
