@@ -1,13 +1,13 @@
 import { bodyModalOpenAdd, bodyModalOpenRemove } from './util.js';
 
-const bigPicture = document.querySelector('.big-picture');
+const COMMENTS_COUNT_SHOW = 5;
 
+const bigPicture = document.querySelector('.big-picture');
 const socialComments = bigPicture.querySelector('.social__comments');
 const socialComment = bigPicture.querySelector('.social__comment');
 const bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
 const commentsLoader = bigPicture.querySelector('.comments-loader');
 
-const COMMENTS_COUNT_SHOW = 5;
 let containerComments = [];
 let commentsCountShown = 0;
 

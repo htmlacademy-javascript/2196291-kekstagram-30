@@ -1,12 +1,13 @@
 import { debounce, getRandomIndex } from './util.js';
 import { createUserPicture } from './rendering.js';
+
+const MAX_RANDOM_FILTER = 10; // колличество элементов в фильтре "случайные"
+
 const filtersEl = document.querySelector('.img-filters');
 const filterForm = document.querySelector('.img-filters__form');
 const defaultButton = filterForm.querySelector('#filter-default');
 const randomButton = filterForm.querySelector('#filter-random');
 const discussedButton = filterForm.querySelector('#filter-discussed');
-
-const MAX_RANDOM_FILTER = 10; // колличество элементов в фильтре "случайные"
 
 
 const FilterEnum = {
@@ -20,15 +21,15 @@ const filterHandlers = {
   [FilterEnum.DEFAULT]: (data) => data,
 
   [FilterEnum.RANDOM]: (data) => {
-    const randomIndexList = [];
+    const listRandomPictures = [];
     const max = Math.min(MAX_RANDOM_FILTER, data.length);
-    while (randomIndexList.length < max) {
+    while (listRandomPictures.length < max) {
       const index = getRandomIndex (0, data.length);
-      if (!randomIndexList.includes(index)) {
-        randomIndexList.push(index);
+      if (!listRandomPictures.includes(index)) {
+        listRandomPictures.push(index);
       }
     }
-    return randomIndexList.map((index) => data[index]);
+    return listRandomPictures.map((index) => data[index]);
   },
   [FilterEnum.DISCUSSED]: (data) => [...data].sort((item1, item2) => item2.comments.length - item1.comments.length),
 

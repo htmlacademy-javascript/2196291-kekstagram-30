@@ -4,16 +4,16 @@ import { showSuccessMessage, showErrorMessage } from './message.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+const SubmitButtonCaption = {
+  SUBMITTING: 'Отправляю...',
+  IDLE: 'Опубликовать',
+};
+
 const imageUploadForm = document.querySelector('.img-upload__form');
 const imageUploadText = document.querySelector('.img-upload__text');
 const formHashtag = imageUploadText.querySelector('.text__hashtags');
 const buttonSubmit = document.querySelector('.img-upload__submit');
 
-
-const SubmitButtonCaption = {
-  SUBMITTING: 'Отправляю...',
-  IDLE: 'Опубликовать',
-};
 
 const toggleSubmitButton = (isDisabled) => {
   buttonSubmit.disabled = isDisabled;
@@ -72,7 +72,7 @@ pristine.addValidator(
 
 
 const sendForm = async (formElement) => {
-  if (!pristine.validate) {
+  if (!pristine.validate()) {
     return;
   }
   try {
@@ -84,9 +84,7 @@ const sendForm = async (formElement) => {
     showErrorMessage();
   } finally {
     toggleSubmitButton(false);
-
   }
-
 };
 
 
