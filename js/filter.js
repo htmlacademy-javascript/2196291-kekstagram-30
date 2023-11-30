@@ -3,18 +3,16 @@ import { createUserPicture } from './rendering.js';
 
 const MAX_RANDOM_FILTER = 10; // колличество элементов в фильтре "случайные"
 
-const filtersEl = document.querySelector('.img-filters');
-const filterForm = document.querySelector('.img-filters__form');
-const defaultButton = filterForm.querySelector('#filter-default');
-const randomButton = filterForm.querySelector('#filter-random');
-const discussedButton = filterForm.querySelector('#filter-discussed');
-
-
 const FilterEnum = {
   DEFAULT: 'default',
   RANDOM: 'random',
   DISCUSSED: 'discussed'
 };
+const filtersEl = document.querySelector('.img-filters');
+const filterForm = document.querySelector('.img-filters__form');
+const defaultButton = filterForm.querySelector('#filter-default');
+const randomButton = filterForm.querySelector('#filter-random');
+const discussedButton = filterForm.querySelector('#filter-discussed');
 
 
 const filterHandlers = {
